@@ -8,10 +8,12 @@ Výstupem jsou váhy modelu (.pt soubor) a .txt soubor, který obsahuje pro kaž
 
 Na testovacím datasetu bylo dosaženo přesnosti 97,24 %, bez použití konvolučních vrstev 97,10 %.
 
-## Jak donutit program fungovat
+## Jak si vycvičit model
 
 Po přenesení dat přes `scp` na frontend metacentra (spustitelný .sh skript pracuje s frontendem skirit.ics.muni.cz) je potřeba zarezervovat si výpočetní kapacitu. Pro trénování modelu je nejlepší použít GPU (trénování trvá zhruba 4 hodiny @ 1x nVidia Tesla T4). Výpočetní kapacitu si lze zamluvit pomocí příkazu: 
 ```
 qsub -q GPU -l select=1:ncpus=1:ngpus=1:mem=32gb:scratch_local=16gb -N tagger metacentrum.sh 
 ```
-Po spuštění úlohy bude poměrně dlouho trvat instalace balíčků pro virtuální prostředí pythonu (proto je také mimojiné třeba vyžádat si 32 GB operační paměti). Běh a stav úlohy lze sledovat zalogováním na přiřazený výpočetní klastr skrze `ssh`. STDOUT a STDERR se nacházejí ve složce `/var/spool/pbs/spool`. Zde je třeba otevřít pomocí `tail -f` `JOBID.OU` pro zobrazení průběhu instalace balíčků a `JOBID.ER` pro sledování trénování modelu.  
+Po spuštění úlohy bude poměrně dlouho trvat instalace balíčků pro virtuální prostředí pythonu (proto je také mimojiné třeba vyžádat si 32 GB operační paměti). Běh a stav úlohy lze sledovat zalogováním na přiřazený výpočetní klastr skrze `ssh`. 
+
+STDOUT a STDERR se nacházejí ve složce `/var/spool/pbs/spool`. Zde je třeba otevřít pomocí `tail -f` `JOBID.OU` pro zobrazení průběhu instalace balíčků a `JOBID.ER` pro sledování trénování modelu.  
