@@ -4,7 +4,7 @@ Repo obsahuje čtyři soubory, `metacentrum.sh`, spustitelný skript pro metacen
 
 Jádro celého modelu (neuronové sítě) jsou dvě vrstvy obousměrných LSTM (tj. do části první vrstvy LSTM vstupují trénovací data od prvního slova do konce, do zbylé části LSTM od posledního slova po první), následované dvěma mezi sebou nepropojenými konvolučními vrstvami, jedna pro předný výstup z LSTM, druhá pro zpětný. Výstup obou konvolučních sítí je sečten a poté poslán na finální FC vrstvu. 
 
-Výstupem jsou váhy modelu a .txt soubor, který obsahuje pro každé slovo z testovacího datasetu mnoho morfologických vlastností slov (pád, rod aj.).
+Výstupem jsou váhy modelu (.pt soubor) a .txt soubor, který obsahuje pro každé slovo z testovacího datasetu mnoho morfologických vlastností slov (pád, rod aj.).
 
 Na testovacím datasetu bylo dosaženo přesnosti 97,24 %, bez použití konvolučních vrstev 97,10 %.
 
